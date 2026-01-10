@@ -100,7 +100,8 @@ export function registerMacros() {
               }
             }
 
-            const text = translate(key, options); $(this.output).append($("<span>").html(text));
+            const text = translate(key, options);
+            $(this.output).append($("<span>").html(text));
         }
     });
 
