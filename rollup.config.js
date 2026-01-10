@@ -13,7 +13,7 @@ export default {
     {
       file: "dist/sugarcube-i18n.js",
       format: "iife",
-      name: "SCI18N", // window.SCI18N
+      name: "SugarCubeI18n", // window.SugarCubeI18n
       sourcemap: true,
     },
 

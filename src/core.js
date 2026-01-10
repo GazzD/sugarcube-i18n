@@ -10,11 +10,9 @@ const i18nOptions = {
 };
 
 function loadScript(src) {
-  // If i18next is already loaded, return it
-  if (window.i18next) return window.i18next;
-
   // Load the script
   return new Promise((resolve, reject) => {
+    // If i18next is already loaded, return it
     if (window.i18next) return resolve();  
     const script = document.createElement("script");
     script.src = src;
