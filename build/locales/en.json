@@ -1,9 +1,0 @@
-{
-    "welcome": "Welcome to the Multilingual Adventure!",
-    "intro": "This is a simple demo of the i18next plugin for SugarCube.",
-    "select_lang": "Select your language:",
-    "greeting": "Hello, {{name}}! Good luck.",
-    "button_start": "Start Journey",
-    "passage_two": "You have arrived at the second passage.",
-    "back": "Go back"
-}

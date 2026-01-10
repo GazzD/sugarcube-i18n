@@ -16,7 +16,7 @@ A lightweight, open-source plugin to add multilingual support to [SugarCube 2.x]
 If you are using `tweego` from the command line, you must include the JavaScript file in your build command so it is bundled directly.
 
 ```bash
-tweego -o build/project.html project.twee sugarcube-i18next.js
+tweego -o build/story.html story.twee sugarcube-i18next.js
 ```
 
 ## Installation
@@ -124,6 +124,14 @@ Creates a standard SugarCube link `<<link>>` using the translated text as the la
 - **key**: The JSON key for the link text.
 - **passage**: The destination passage name.
 - **options**: Same interpolation options as `<<t>>`.
+
+## Editor Support (Optional)
+
+To avoid macro warnings in editors like Tweego / t3lt, you can add a
+`twee-config.yaml` file defining the custom macros.
+
+An example is provided in the `editor/` folder.
+
 
 ## Troubleshooting
 

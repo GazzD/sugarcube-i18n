@@ -123,15 +123,13 @@
     /**
      * Macro: <<loadTranslations "path/to/file.json" [namespace]>>
      * Loads a JSON file and adds it to i18next resources.
-     * MVP: Adds to generic 'translation' namespace or merges based on language code in filename or structure.
-     * 
-     * Convention for MVP:
+     *
+     * Convention:
      * The JSON file should be structured as:
      * {
      *   "key": "translation"
      * }
-     * 
-     * Wait, typically files are per language. 
+     *
      * Usage: <<loadTranslations "locales/en.json" "en">>
      */
     Macro.add('loadTranslations', {
