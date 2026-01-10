@@ -26,7 +26,6 @@ export function registerMacros() {
 
             // fetch is async, but macros in Init/StoryInit are synchronous. 
             // SugarCube doesn't pause for async macros in Init usually, but content won't render till ready if used in Passages.
-            // For MVP, we assume this is called in StoryInit and might take a moment.
             
             fetch(path)
                 .then(response => {
