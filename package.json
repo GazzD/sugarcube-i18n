@@ -1,14 +1,14 @@
 {
-  "name": "sugarcube-i18n-plugin",
-  "version": "1.0.0",
-  "description": "i18n plugin for Twine SugarCube using i18next",
+  "name": "sugarcube-i18n",
+  "version": "0.1.0",
+  "description": "i18n plugin for Twine SugarCube",
   "license": "MIT",
   "author": "@GazzD",
-  "homepage": "https://github.com/GazzD/sugarcube-i18n-plugin",
+  "homepage": "https://github.com/GazzD/sugarcube-i18n",
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/GazzD/sugarcube-i18n-plugin.git"
+    "url": "git+https://github.com/GazzD/sugarcube-i18n.git"
   },
   "keywords": [
     "twine",
@@ -16,10 +16,11 @@
     "i18n",
     "i18next",
     "interactive-fiction",
-    "narrative"
+    "narrative",
+    "plugin"
   ],
-  "main": "dist/sugarcube-i18n-plugin.js",
-  "module": "dist/sugarcube-i18n-plugin.esm.js",
+  "main": "dist/sugarcube-i18n.js",
+  "module": "dist/sugarcube-i18n.esm.js",
   "files": [
     "dist",
     "editor",
@@ -43,6 +44,6 @@
     "rollup": "^4.54.0"
   },
   "bugs": {
-    "url": "https://github.com/GazzD/sugarcube-i18n-plugin/issues"
+    "url": "https://github.com/GazzD/sugarcube-i18n/issues"
   }
 }
