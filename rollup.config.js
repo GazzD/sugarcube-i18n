@@ -9,12 +9,12 @@ export default {
   input: "src/index.js",
 
   output: [
-    // IIFE build (Twine / SugarCube)
+    // IIFE build (Twine)
     {
       file: "dist/sugarcube-i18n.js",
       format: "iife",
       name: "SugarCubeI18n", // window.SugarCubeI18n
-      sourcemap: true,
+      sourcemap: false,
     },
 
     // ESM build (npm)
