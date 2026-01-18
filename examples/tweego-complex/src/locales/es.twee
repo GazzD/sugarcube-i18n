@@ -1,0 +1,23 @@
+:: i18n-es [i18n]
+{
+  "title": "El Aprendiz de Alquimista",
+  "intro_text": "Bienvenido a tu nuevo trabajo en la Vieja Tienda de Alquimia. Por favor, regístrate.",
+  "ask_name": "Tu Nombre",
+  "start_adventure": "Comenzar la Aventura",
+  "day_counter": "Día {{day}}",
+  "hub_title": "Mesa de Trabajo de {{name}}",
+  "hub_desc": "El olor a azufre y hierbas secas llena el aire. ¿Qué harás hoy?",
+  "inventory_title": "Inventario",
+  "status_pills_one": "Tienes {{count}} píldora curativa.",
+  "status_pills_other": "Tienes {{count}} píldoras curativas.",
+  "action_forest": "Recolectar Ingredientes en el Bosque",
+  "action_market": "Vender Píldoras en el Mercado",
+  "forest_title": "El Bosque de los Susurros",
+  "forest_result_one": "Buscaste bajo las raíces y encontraste {{count}} ingrediente.",
+  "forest_result_other": "Buscaste bajo las raíces y encontraste {{count}} ingredientes.",
+  "market_title": "Mercado del Pueblo",
+  "market_sold_one": "¡Los clientes acudieron a ti! Vendiste {{count}} píldora y ganaste {{earnings}} monedas de oro.",
+  "market_sold_other": "¡Los clientes acudieron a ti! Vendiste {{count}} píldoras y ganaste {{earnings}} monedas de oro.",
+  "market_empty": "¡No tienes nada que vender! Los aldeanos parecen decepcionados.",
+  "back_hub": "Volver a la Tienda"
+}

@@ -4,64 +4,62 @@ A lightweight, open-source plugin to add multilingual support to [SugarCube 2.x]
 
 ## Features
 
-- **Easy Translation**: Use the `<<t>>` macro to display text.
-- **External Files**: Load translations from clean JSON files.
-- **Persistence**: Automatically saves and restores the selected language on save/load.
-- **Interpolation**: Support for variables inside translations (e.g., "Hello, {{player}}!").
-- **Language Switching**: Hot-swap languages without reloading the page.
-
-
-## CLI Build (Tweego)
-
-If you are using `tweego` from the command line, you must include the JavaScript file in your build command so it is bundled directly.
-
-```bash
-tweego -o build/story.html story.twee sugarcube-i18next.js
-```
+- **Zero-Config Setup**: Automatically detects languages and adds a Settings menu.
+- **Offline Ready**: Use **Data Passages** to store translations directly in your game file. No server required.
+- **Easy Translation**: `<<t>>` macro for text, `<<tlink>>` for translated links.
+- **Robust**: Supports pluralization, interpolation (`Hello, {{name}}!`), and HTML formatting.
+- **Editor Friendly**: Includes configuration for `t3lt` VS Code extension.
 
 ## Installation
 
+### Option A: NPM (Recommended for Tweego users)
+If you manage your project dependencies with npm:
 
-1. **Download the Script**: Get `sugarcube-i18next.js` from this repository.
-2. **Add to Twine**:
-   - Open your story in Twine 2.
-   - Go to **Story Menu** -> **Edit Story JavaScript**.
-   - Paste the entire content of `sugarcube-i18next.js`.
-3. **External Library**: The script automatically loads `i18next` from a CDN (`unpkg.com`). 
-   - *Note*: You need an internet connection for the CDN to work. For offline use, download `i18next.min.js` and add its content to your Story JavaScript *before* the plugin code.
+```bash
+npm install sugarcube-i18n
+```
+
+Then, include the library in your build command. The file is located at `node_modules/sugarcube-i18n/dist/sugarcube-i18n.js`.
+
+### Option B: Direct Download (For Twine App)
+1.  Download `sugarcube-i18n.js` from the [releases page](https://github.com/GazzD/sugarcube-i18n/releases) (or the `dist/` folder).
+2.  Open your story in Twine 2.
+3.  Go to **Story Menu** -> **Edit Story JavaScript**.
+4.  Paste the content of the file.
+
+> **Note**: Requires an internet connection to load `i18next` from the CDN. For completely offline games, paste the code of `i18next.min.js` *before* this plugin code.
 
 ## Usage
 
-### 1. Create Translation Files
-Create JSON files for each language (e.g., `en.json`, `es.json`) in a folder named `locales` relative to your HTML game file.
+### 1. Define Translations (Data Passages)
+This is the modern, recommended way. It works 100% offline (file://) and inside Twine's "Play" mode.
 
-**locales/en.json**
+1.  Create a new passage.
+2.  Add the tag `i18n`.
+3.  Name it `i18n-<code>` (e.g., `i18n-en`, `i18n-es`).
+4.  Paste your JSON content.
+
+**Passage: `i18n-en`** `[tag: i18n]`
 ```json
 {
   "greeting": "Hello, {{name}}!",
-  "start_btn": "Start Game"
+  "apples_one": "You have one apple.",
+  "apples_other": "You have {{count}} apples."
 }
 ```
 
-**locales/es.json**
+**Passage: `i18n-es`** `[tag: i18n]`
 ```json
 {
   "greeting": "¡Hola, {{name}}!",
-  "start_btn": "Comenzar Juego"
+  "apples_one": "Tienes una manzana.",
+  "apples_other": "Tienes {{count}} manzanas."
 }
 ```
 
-### 2. Initialize in StoryInit
-Load your translation files in the `StoryInit` passage.
+### 2. Macros
 
-```
-<<loadTranslations "locales/en.json" "en">>
-<<loadTranslations "locales/es.json" "es">>
-```
-
-> **Important**: Loading local JSON files via `fetch` requires a local web server due to browser security policies (CORS). If you just open the HTML file directly from disk, it might fail. Use VS Code Live Server or `python -m http.server` to test.
-
-### 3. Display Text
+#### `<<t "key" [options]>>`
 Use the `<<t>>` macro to translate text. You can pass interpolation options as an object or as key-value pairs.
 
 ```
@@ -74,56 +72,50 @@ Use the `<<t>>` macro to translate text. You can pass interpolation options as a
 
 /* Option 3: Basic usage */
 <<t "welcome">>
+
+/* Plurals (automatically uses _one or _other based on count) */
+<<t "apples" "count" $appleCount>>
 ```
 
-### 4. Translated Links
-Use `<<tlink>>` to simplify creating links with translated text.
+#### `<<tlink "key" "passageName" [options]>>`
+Creates a standard link with translated label.
 
 ```
-/* Basic Link */
-<<tlink "start_btn" "NextPassage">>
-
-/* Link with interpolation */
-<<tlink "continue_btn" "Chapter1" "chapter" 1>>
+<<tlink "back_button" "Hub">>
 ```
 
-### 5. Switch Language
-Use macros or buttons to let the user change the language.
+#### `<<tbutton "key" [options]>>`
+Creates a standard button with translated label. Acts as a container macro.
 
 ```
-<<button "English">>
-    <<setLang "en">>
-<</button>>
-
-<<button "Español">>
-    <<setLang "es">>
-<</button>>
+<<tbutton "start_game">>
+    <<run Engine.play("Hub")>>
+<</tbutton>>
 ```
 
-## API Reference
 
-### `<<loadTranslations "path" "langCode">>`
-Loads a JSON file from the specified path and assigns it to the language code.
-- **path**: Relative URL to the JSON file.
-- **langCode**: The language code (e.g., 'en', 'es', 'fr').
+### 3. Language Switching
+The plugin **automatically** adds a "Language" dropdown to the SugarCube **Settings** panel if it detects more than one language. The user's choice is saved automatically.
 
-### `<<setLang "langCode">>`
-Switches the current language to `langCode`.
-- Updates `$lang` variable.
-- Refreshes the current passage to apply changes immediately.
+To force a language change manually:
+```
+<<setLang "es">>
+```
 
-### `<<t "key" [options]>>`
-Returns the translation for the given key.
-- **key**: The JSON key.
-- **options**:
-    - **Object**: A JavaScript object (e.g., `<<set $o to {n:1}>> <<t "k" $o>>`).
-    - **Key-Value Pairs**: Alternating key and value arguments (e.g., `<<t "key" "param" $value>>`).
+## Legacy: HTTP Loading (Advanced)
+If you prefer loading separate `.json` files via AJAX (requires a local HTTP server):
 
-### `<<tlink "key" "passage" [options]>>`
-Creates a standard SugarCube link `<<link>>` using the translated text as the label.
-- **key**: The JSON key for the link text.
-- **passage**: The destination passage name.
-- **options**: Same interpolation options as `<<t>>`.
+```
+<<loadTranslations "locales/en.json" "en">>
+```
+*Warning*: This will fail strictly in offline/local file contexts due to CORS.
+
+## Building with Tweego
+Include the JS file in your compilation.
+
+```bash
+tweego -o index.html src/ node_modules/sugarcube-i18n/dist/sugarcube-i18n.js
+```
 
 ## Editor Support (Optional)
 
@@ -132,12 +124,11 @@ To avoid macro warnings in editors like Tweego / t3lt, you can add a
 
 An example is provided in the `editor/` folder.
 
-
-## Troubleshooting
-
-- **"Failed to load locales/en.json"**: This is usually a CORS error. Ensure you are running the game via a local server (http://localhost...) and not file protocol (file://...).
-- **"i18next is not defined"**: Check your internet connection (if using CDN) or ensure the library logic is correct.
-- **Missing Keys**: Use `debug: true` in the internal `i18nOptions` inside the JS file to see warnings in the browser console.
+## Examples
+Check the `examples/` folder:
+- **tweego-basic**: Minimal setup.
+- **tweego-complex**: Inventory demo with styles and pluralization.
 
 ## License
 MIT License. Free to use in commercial and non-commercial projects.
+

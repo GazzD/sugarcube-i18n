@@ -1,0 +1,38 @@
+:: StoryTitle
+SugarCube i18n Data Passages Demo
+
+:: StoryData
+{
+  "ifid": "A4027725-72B5-4089-838D-C204B76D7DC8",
+  "format": "SugarCube",
+  "format-version": "2.37.3",
+  "start": "Start"
+}
+
+:: StoryJavaScript [script]
+/* Place contents of sugarcube-i18n.js here or bundle it via CLI */
+/* For this example, we assume it's bundled via: tweego -o index.html example.twee sugarcube-i18n.js */
+
+:: Start
+<h1><<t "welcome">></h1>
+<p><<t "intro">></p>
+
+<<button "English">>
+  <<setLang "en">>
+<</button>>
+<<button "Español">>
+  <<setLang "es">>
+<</button>>
+
+<hr>
+
+<<set $name to "Adventurer">>
+<p><<t "greeting" "name" $name>></p>
+
+<<tlink "next_page" "Page2">>
+
+:: Page2
+<h2><<t "page2_title">></h2>
+<<t "page2_text">>
+
+<<tlink "back" "Start">>

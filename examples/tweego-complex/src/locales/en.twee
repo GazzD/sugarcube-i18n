@@ -1,0 +1,23 @@
+:: i18n-en [i18n]
+{
+  "title": "The Alchemist's Apprentice",
+  "intro_text": "Welcome to your new job at the Old Alchemist's Shop. Please, sign in.",
+  "ask_name": "Your Name",
+  "start_adventure": "Start Adventure",
+  "day_counter": "Day {{day}}",
+  "hub_title": "{{name}}'s Workbench",
+  "hub_desc": "The smell of sulfur and dried herbs fills the air. What will you do today?",
+  "inventory_title": "Inventory",
+  "status_pills_one": "You have {{count}} healing pill.",
+  "status_pills_other": "You have {{count}} healing pills.",
+  "action_forest": "Gather Ingredients in the Forest",
+  "action_market": "Sell Pills at the Market",
+  "forest_title": "The Whispering Forest",
+  "forest_result_one": "You searched under the roots and found {{count}} ingredient.",
+  "forest_result_other": "You searched under the roots and found {{count}} ingredients.",
+  "market_title": "Town Market",
+  "market_sold_one": "Customers flocked to you! You sold {{count}} pill and earned {{earnings}} gold.",
+  "market_sold_other": "Customers flocked to you! You sold {{count}} pills and earned {{earnings}} gold.",
+  "market_empty": "You have nothing to sell! The villagers look disappointed.",
+  "back_hub": "Return to Shop"
+}

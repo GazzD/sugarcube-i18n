@@ -1,0 +1,23 @@
+:: i18n-fr [i18n]
+{
+  "title": "L'Apprenti Alchimiste",
+  "intro_text": "Bienvenue dans votre nouveau travail à la Vieille Boutique d'Alchimie.",
+  "ask_name": "Votre Nom",
+  "start_adventure": "Commencer l'Aventure",
+  "day_counter": "Jour {{day}}",
+  "hub_title": "L'établi de {{name}}",
+  "hub_desc": "L'odeur du soufre et des herbes séchées remplit l'air. Que ferez-vous aujourd'hui?",
+  "inventory_title": "Inventaire",
+  "status_pills_one": "Vous avez {{count}} pilule de soin.",
+  "status_pills_other": "Vous avez {{count}} pilules de soin.",
+  "action_forest": "Récolter des ingrédients dans la forêt",
+  "action_market": "Vendre des pilules au marché",
+  "forest_title": "La Forêt des Murmures",
+  "forest_result_one": "Vous avez cherché sous les racines et trouvé {{count}} ingrédient.",
+  "forest_result_other": "Vous avez cherché sous les racines et trouvé {{count}} ingrédients.",
+  "market_title": "Marché de la Ville",
+  "market_sold_one": "Les clients ont afflué ! Vous avez vendu {{count}} pilule et gagné {{earnings}} or.",
+  "market_sold_other": "Les clients ont afflué ! Vous avez vendu {{count}} pilules et gagné {{earnings}} or.",
+  "market_empty": "Vous n'avez rien à vendre ! Les villageois ont l'air déçus.",
+  "back_hub": "Retour à la Boutique"
+}

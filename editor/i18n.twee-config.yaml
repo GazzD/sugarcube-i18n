@@ -4,23 +4,30 @@ sugarcube-2:
       name: loadTranslations
       description: "Loads a JSON translation file."
       parameters: 
-        - "path"
-        - "language"
+        - "string"
+        - "string"
     setLang:
       name: setLang
       description: "Sets the current language."
       parameters:
-        - "language_code"
+        - "string"
     t:
       name: t
       description: "Translates a key."
       parameters:
-        - "key"
-        - "options"
+        - "string"
+        - "any" # optional options
     tlink:
       name: tlink
       description: "Translates a key and creates a link to a passage."
       parameters:
-        - "key"
-        - "passage"
-        - "options"
+        - "string" # key
+        - "string" # passage
+        - "any"    # options
+    tbutton:
+      name: tbutton
+      description: "Translates a key and creates a button."
+      parameters:
+        - "string" # key
+        - "any"    # options
+      container: true
