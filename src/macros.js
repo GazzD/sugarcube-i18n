@@ -58,11 +58,13 @@ export function registerMacros() {
    * Translates a key. Supports interpolation.
    * Options can be an object or key-value pairs.
    * Example:
-   *  - Object options: 
-   *       <<set $opts to { name: $name }>>
-   *       <<t "greeting" $opts>>
+   *  - No options:
+   *    <<t "greeting">>
+   *  - Object options:
+   *    <<set $opts to { name: $name }>>
+   *    <<t "greeting" $opts>>
    *  - Key-Value pairs options:
-   *       <<t "greeting" "name" $name>>
+   *    <<t "greeting" "name" $name>>
    */
   Macro.add('t', {
       handler() {
@@ -99,9 +101,13 @@ export function registerMacros() {
    * Translates a key and creates a link to a passage. Supports interpolation.
    * Options can be an object or key-value pairs.
    * Example:
-   * <<tlink "go-to-forest" "ForestPassage">>
-   * <<tlink "go-to-forest" "ForestPassage" { name: $name }>>
-   * <<tlink "go-to-forest" "ForestPassage" "name" $name>>
+   *  - No options:
+   *    <<tlink "go-to-forest" "ForestPassage">>
+   *  - Object options:
+   *    <<set $opts to { name: $name }>>
+   *    <<tlink "go-to-forest" "ForestPassage" $opts>>
+   *  - Key-Value pairs options:
+   *    <<tlink "go-to-forest" "ForestPassage" "name" $name>>
    */
   Macro.add("tlink", {
     handler() {
