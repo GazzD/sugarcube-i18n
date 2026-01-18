@@ -1,0 +1,22 @@
+/* --- Translations (Data Passages) --- */
+:: i18n-en [i18n]
+{
+  "welcome": "Welcome to the Offline Demo",
+  "intro": "This demo uses Data Passages, so it works without a server!",
+  "greeting": "Hello, {{name}}!",
+  "next_page": "Go to Page 2",
+  "page2_title": "Second Page",
+  "page2_text": "You are now on the second page.",
+  "back": "Go Back"
+}
+
+:: i18n-es [i18n]
+{
+  "welcome": "Bienvenido a la Demo Offline",
+  "intro": "Esta demo usa Pasajes de Datos, ¡así que funciona sin servidor!",
+  "greeting": "¡Hola, {{name}}!",
+  "next_page": "Ir a la Página 2",
+  "page2_title": "Segunda Página",
+  "page2_text": "Ahora estás en la segunda página.",
+  "back": "Volver"
+}

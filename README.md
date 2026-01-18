@@ -32,10 +32,17 @@ tweego -o build/story.html story.twee sugarcube-i18next.js
 
 ## Usage
 
-### 1. Create Translation Files
-Create JSON files for each language (e.g., `en.json`, `es.json`) in a folder named `locales` relative to your HTML game file.
+### 1. Define Translations (Data Passages)
+The recommended way to define translations is using **Twine Passages**. This method works offline and within the Twine App "Play" mode without needing a local server.
 
-**locales/en.json**
+1.  Create a new passage.
+2.  Add the tag `i18n`.
+3.  Name the passage `i18n-<code>` (e.g., `i18n-en`, `i18n-es`).
+4.  Paste your JSON translation data inside.
+
+**Passage Name:** `i18n-en`
+**Tags:** `i18n`
+**Content:**
 ```json
 {
   "greeting": "Hello, {{name}}!",
@@ -43,7 +50,9 @@ Create JSON files for each language (e.g., `en.json`, `es.json`) in a folder nam
 }
 ```
 
-**locales/es.json**
+**Passage Name:** `i18n-es`
+**Tags:** `i18n`
+**Content:**
 ```json
 {
   "greeting": "¡Hola, {{name}}!",
@@ -51,17 +60,9 @@ Create JSON files for each language (e.g., `en.json`, `es.json`) in a folder nam
 }
 ```
 
-### 2. Initialize in StoryInit
-Load your translation files in the `StoryInit` passage.
+The plugin automatically detects and loads these passages on startup.
 
-```
-<<loadTranslations "locales/en.json" "en">>
-<<loadTranslations "locales/es.json" "es">>
-```
-
-> **Important**: Loading local JSON files via `fetch` requires a local web server due to browser security policies (CORS). If you just open the HTML file directly from disk, it might fail. Use VS Code Live Server or `python -m http.server` to test.
-
-### 3. Display Text
+### 2. Display Text
 Use the `<<t>>` macro to translate text. You can pass interpolation options as an object or as key-value pairs.
 
 ```
@@ -76,7 +77,7 @@ Use the `<<t>>` macro to translate text. You can pass interpolation options as a
 <<t "welcome">>
 ```
 
-### 4. Translated Links
+### 3. Translated Links
 Use `<<tlink>>` to simplify creating links with translated text.
 
 ```
@@ -87,7 +88,7 @@ Use `<<tlink>>` to simplify creating links with translated text.
 <<tlink "continue_btn" "Chapter1" "chapter" 1>>
 ```
 
-### 5. Switch Language
+### 4. Switch Language
 Use macros or buttons to let the user change the language.
 
 ```
@@ -99,6 +100,16 @@ Use macros or buttons to let the user change the language.
     <<setLang "es">>
 <</button>>
 ```
+
+## Legacy: External Files (Advanced)
+If you prefer keeping JSONs in separate files (requires a local server or strict CORS handling), you can still use `<<loadTranslations>>`.
+
+1.  Create `locales/en.json`.
+2.  In `StoryInit`:
+    ```
+    <<loadTranslations "locales/en.json" "en">>
+    ```
+> **Warning**: This method fails in local `file://` execution unless you run a local HTTP server.
 
 ## API Reference
 

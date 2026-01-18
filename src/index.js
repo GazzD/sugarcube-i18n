@@ -1,4 +1,4 @@
-import { initI18n, STATE_VAR_NAME } from "./core.js";
+import { initI18n, getAvailableLanguages, setLang } from "./core.js";
 import { registerMacros } from "./macros.js";
 
 registerMacros();
@@ -20,17 +20,40 @@ registerMacros();
   }
 })();
 
+
 // Save / Load hooks
-Save.onLoad.add(save => {
-  const moment = save?.state?.history?.[save.state.index];
-  const lang = moment?.variables?.[STATE_VAR_NAME];
-  if (lang && window.i18next) {
-    i18next.changeLanguage(lang);
-  }
-});
+// No longer syncing strict state variable, relying on Global Settings.
+// However, if we want to support "saving in English then loading a save that was in Spanish",
+// with purely Settings based approach, loading the Spanish save will keep the game in English (user pref).
+// This is usually desired behavior for "Application Language".
+
+// Automatic Settings Integration
+function initSettings() {
+    const langs = getAvailableLanguages();
+    if (langs.length > 1) {
+        Setting.addList("i18n_lang", {
+            label: "Language",
+            list: langs,
+            default: settings.i18n_lang || langs[0],
+            onInit: function () {},
+            onChange: function () {
+                const newLang = settings.i18n_lang;
+                if (window.i18next && newLang) {
+                    setLang(newLang).then(() => Engine.show());
+                }
+            }
+        });
+    }
+}
+
+initSettings();
+
 
 $(document).on(":storyready", () => {
-  if (window.i18next && State.variables[STATE_VAR_NAME]) {
-    i18next.changeLanguage(State.variables[STATE_VAR_NAME]);
-  }
+    // If we have a setting saved, ensure i18next respects it on story ready
+    if (settings.i18n_lang && window.i18next) {
+        if (i18next.language !== settings.i18n_lang) {
+             setLang(settings.i18n_lang);
+        }
+    } 
 });
