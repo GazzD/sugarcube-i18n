@@ -84,6 +84,16 @@ Creates a standard link with translated label.
 <<tlink "back_button" "Hub">>
 ```
 
+#### `<<tbutton "key" [options]>>`
+Creates a standard button with translated label. Acts as a container macro.
+
+```
+<<tbutton "start_game">>
+    <<run Engine.play("Hub")>>
+<</tbutton>>
+```
+
+
 ### 3. Language Switching
 The plugin **automatically** adds a "Language" dropdown to the SugarCube **Settings** panel if it detects more than one language. The user's choice is saved automatically.
 

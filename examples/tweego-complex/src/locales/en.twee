@@ -3,6 +3,7 @@
   "title": "The Alchemist's Apprentice",
   "intro_text": "Welcome to your new job at the Old Alchemist's Shop. Please, sign in.",
   "ask_name": "Your Name",
+  "start_adventure": "Start Adventure",
   "day_counter": "Day {{day}}",
   "hub_title": "{{name}}'s Workbench",
   "hub_desc": "The smell of sulfur and dried herbs fills the air. What will you do today?",

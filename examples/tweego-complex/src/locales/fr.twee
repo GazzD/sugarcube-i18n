@@ -3,6 +3,7 @@
   "title": "L'Apprenti Alchimiste",
   "intro_text": "Bienvenue dans votre nouveau travail à la Vieille Boutique d'Alchimie.",
   "ask_name": "Votre Nom",
+  "start_adventure": "Commencer l'Aventure",
   "day_counter": "Jour {{day}}",
   "hub_title": "L'établi de {{name}}",
   "hub_desc": "L'odeur du soufre et des herbes séchées remplit l'air. Que ferez-vous aujourd'hui?",

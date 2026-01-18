@@ -3,6 +3,7 @@
   "title": "El Aprendiz de Alquimista",
   "intro_text": "Bienvenido a tu nuevo trabajo en la Vieja Tienda de Alquimia. Por favor, regístrate.",
   "ask_name": "Tu Nombre",
+  "start_adventure": "Comenzar la Aventura",
   "day_counter": "Día {{day}}",
   "hub_title": "Mesa de Trabajo de {{name}}",
   "hub_desc": "El olor a azufre y hierbas secas llena el aire. ¿Qué harás hoy?",

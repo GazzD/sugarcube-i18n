@@ -5,7 +5,8 @@ SugarCube i18n Data Passages Demo
 {
   "ifid": "A4027725-72B5-4089-838D-C204B76D7DC8",
   "format": "SugarCube",
-  "format-version": "2.36.1"
+  "format-version": "2.37.3",
+  "start": "Start"
 }
 
 :: StoryJavaScript [script]

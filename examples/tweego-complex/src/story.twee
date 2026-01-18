@@ -5,7 +5,8 @@ The Alchemist's Apprentice
 {
   "ifid": "0D403612-4C10-4355-8756-7494D316900D",
   "format": "SugarCube",
-  "format-version": "2.36.1"
+  "format-version": "2.37.3",
+  "start": "Start"
 }
 
 :: StoryJavaScript [script]
@@ -34,9 +35,9 @@ setup.day = 1;
   </div>
 
   <br>
-  <<button "Start Adventure">>
+  <<tbutton "start_adventure">>
     <<run Engine.play("Hub")>>
-  <</button>>
+  <</tbutton>>
 </div>
 
 :: Hub
@@ -57,8 +58,8 @@ setup.day = 1;
   </div>
 
   <div class="actions">
-    <<tlink "action_forest" "Forest" "class" "btn-action">>
-    <<tlink "action_market" "Market" "class" "btn-action">>
+    <<tlink "action_forest" "Forest">>
+    <<tlink "action_market" "Market">>
   </div>
 </div>
 

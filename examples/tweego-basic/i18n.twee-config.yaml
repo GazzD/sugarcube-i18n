@@ -1,0 +1,33 @@
+sugarcube-2:
+  macros:
+    loadTranslations:
+      name: loadTranslations
+      description: "Loads a JSON translation file."
+      parameters: 
+        - "string"
+        - "string"
+    setLang:
+      name: setLang
+      description: "Sets the current language."
+      parameters:
+        - "string"
+    t:
+      name: t
+      description: "Translates a key."
+      parameters:
+        - "string"
+        - "any" # optional options
+    tlink:
+      name: tlink
+      description: "Translates a key and creates a link to a passage."
+      parameters:
+        - "string" # key
+        - "string" # passage
+        - "any"    # options
+    tbutton:
+      name: tbutton
+      description: "Translates a key and creates a button."
+      parameters:
+        - "string" # key
+        - "any"    # options
+      container: true
