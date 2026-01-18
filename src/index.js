@@ -21,12 +21,6 @@ registerMacros();
 })();
 
 
-// Save / Load hooks
-// No longer syncing strict state variable, relying on Global Settings.
-// However, if we want to support "saving in English then loading a save that was in Spanish",
-// with purely Settings based approach, loading the Spanish save will keep the game in English (user pref).
-// This is usually desired behavior for "Application Language".
-
 // Automatic Settings Integration
 function initSettings() {
     const langs = getAvailableLanguages();

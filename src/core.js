@@ -1,10 +1,5 @@
 "use strict";
 
-export const STATE_VAR_NAME = "lang"; // Legacy: Kept if user manually accesses $lang, though plugin no longer relies on it for truth.
-// Actually, user requested cleanup. Let's remove it but we might break external scripts relying on $lang.
-// Let's keep it but stop syncing? No, better to remove confusion.
-// If we remove logic, we don't need the constant.
-
 const I18NEXT_CDN = "https://unpkg.com/i18next@latest/i18next.min.js";
 
 const i18nOptions = {

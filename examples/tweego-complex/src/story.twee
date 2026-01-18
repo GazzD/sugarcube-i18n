@@ -1,0 +1,90 @@
+:: StoryTitle
+The Alchemist's Apprentice
+
+:: StoryData
+{
+  "ifid": "0D403612-4C10-4355-8756-7494D316900D",
+  "format": "SugarCube",
+  "format-version": "2.36.1"
+}
+
+:: StoryJavaScript [script]
+/* 
+  In a real scenario, you bundle sugarcube-i18n.js via CLI.
+  For this code to be syntax-valid in editors, we leave this placeholder.
+*/
+setup.pills = 0;
+setup.gold = 50;
+setup.day = 1;
+
+:: StoryInit
+/* Init variables */
+<<set $pills to 5>>
+<<set $gold to 100>>
+<<set $day to 1>>
+<<set $name to "Apprentice">>
+
+:: Start
+<div class="centered-box">
+  <h1><<t "title">></h1>
+  <p><<t "intro_text">></p>
+  
+  <div class="name-input">
+    <<t "ask_name">>: <<textbox "$name" "Apprentice">>
+  </div>
+
+  <br>
+  <<button "Start Adventure">>
+    <<run Engine.play("Hub")>>
+  <</button>>
+</div>
+
+:: Hub
+<div class="hud">
+  <span>💰 $gold</span>
+  <span>📅 <<t "day_counter" "day" $day>></span>
+</div>
+
+<div class="main-content">
+  <h2><<t "hub_title" "name" $name>></h2>
+  <p><<t "hub_desc">></p>
+
+  <div class="inventory-box">
+    <h3><<t "inventory_title">></h3>
+    <p>
+      <<t "status_pills" "count" $pills>>
+    </p>
+  </div>
+
+  <div class="actions">
+    <<tlink "action_forest" "Forest" "class" "btn-action">>
+    <<tlink "action_market" "Market" "class" "btn-action">>
+  </div>
+</div>
+
+:: Forest
+<h2><<t "forest_title">></h2>
+<<set _found to random(1, 4)>>
+<<set $pills to $pills + _found>>
+
+<p><<t "forest_result" "count" _found>></p>
+
+<<tlink "back_hub" "Hub">>
+
+:: Market
+<h2><<t "market_title">></h2>
+
+<<if $pills > 0>>
+  <<set _sold to random(1, $pills)>>
+  <<set _price to 10>>
+  <<set _earnings to _sold * _price>>
+  
+  <<set $pills to $pills - _sold>>
+  <<set $gold to $gold + _earnings>>
+  
+  <p><<t "market_sold" "count" _sold "earnings" _earnings>></p>
+<<else>>
+  <p><<t "market_empty">></p>
+<</if>>
+
+<<tlink "back_hub" "Hub">>

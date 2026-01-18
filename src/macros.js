@@ -4,13 +4,9 @@ export function registerMacros() {
 
   /**
      * Macro: <<loadTranslations "path/to/file.json" [namespace]>>
-     * Loads a JSON file and adds it to i18next resources.
-     *
-     * Convention:
-     * The JSON file should be structured as:
-     * {
-     *   "key": "translation"
-     * }
+     * [ADVANCED/LEGACY] Loads a JSON file via HTTP fetch.
+     * WARNING: Requires a local HTTP server to work (won't work with file://).
+     * Prefer using Data Passages (:: i18n-en [i18n]) for offline compatibility.
      *
      * Usage: <<loadTranslations "locales/en.json" "en">>
      */
@@ -24,9 +20,6 @@ export function registerMacros() {
             const lang = this.args[1];
             const ns = 'translation'; // default namespace
 
-            // fetch is async, but macros in Init/StoryInit are synchronous. 
-            // SugarCube doesn't pause for async macros in Init usually, but content won't render till ready if used in Passages.
-            
             fetch(path)
                 .then(response => {
                     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
@@ -36,9 +29,6 @@ export function registerMacros() {
                     if (window.i18next) {
                         i18next.addResourceBundle(lang, ns, data, true, true);
                         console.log(`[i18n] Loaded translations for ${lang} from ${path}`);
-                        // If this is the current language, trigger a refresh might be needed if passage is already shown?
-                        // Usually this is done in StoryInit so no passage is shown yet.
-                        
                         // Force update engine if we are currently looking at this language
                         if (i18next.language === lang) {
                            Engine.show(); // Refreshes current passage if needed, though be careful in Init
